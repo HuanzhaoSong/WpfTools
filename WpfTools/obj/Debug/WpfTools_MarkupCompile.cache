@@ -10,11 +10,11 @@ none
 false
 CODE_ANALYSIS;DEBUG;TRACE
 E:\Project2015\WpfTools\WpfTools\App.xaml
-2-1356017796
+4-983113443
 
-111841344722
+15384869491
 68-1947585998
-MainWindow.xaml;Skins\MainSkin.xaml;
+MainWindow.xaml;Skins\MainSkin.xaml;View\FormExchangeStringPositionView.xaml;View\FormSqliteView.xaml;
 
 False
 

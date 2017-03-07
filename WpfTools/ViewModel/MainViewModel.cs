@@ -1,65 +1,45 @@
 ﻿using GalaSoft.MvvmLight;
 using WpfTools.Model;
+using GalaSoft.MvvmLight.Command;
 
 namespace WpfTools.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// See http://www.mvvmlight.net
-    /// </para>
-    /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        private readonly IDataService _dataService;
-
         /// <summary>
-        /// The <see cref="WelcomeTitle" /> property's name.
+        /// 命令 弹出 字符串调换位置窗体
         /// </summary>
-        public const string WelcomeTitlePropertyName = "WelcomeTitle";
-
-        private string _welcomeTitle = string.Empty;
-
+        public RelayCommand ShowFormExchangeStringPositionCommand { get; set; }
         /// <summary>
-        /// Gets the WelcomeTitle property.
-        /// Changes to that property's value raise the PropertyChanged event. 
+        /// 命令 弹出 sqlite语句生成窗体
         /// </summary>
-        public string WelcomeTitle
-        {
-            get
-            {
-                return _welcomeTitle;
-            }
-            set
-            {
-                Set(ref _welcomeTitle, value);
-            }
-        }
-
+        public RelayCommand ShowFormSqliteCommand { get; set; }
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel(IDataService dataService)
+        public MainViewModel()
         {
-            _dataService = dataService;
-            _dataService.GetData(
-                (item, error) =>
-                {
-                    if (error != null)
-                    {
-                        // Report error here
-                        return;
-                    }
-
-                    WelcomeTitle = item.Title;
-                });
+            ShowFormExchangeStringPositionCommand = new RelayCommand(ShowFormExchangeStringPosition);
+            ShowFormSqliteCommand = new RelayCommand(ShowFormSqlite);
         }
 
-        ////public override void Cleanup()
-        ////{
-        ////    // Clean up if needed
+        /// <summary>
+        /// 弹出 字符串调换位置窗体
+        /// </summary>
+        private void ShowFormExchangeStringPosition()
+        {
+            var d = new View.FormExchangeStringPositionView();
+            d.ShowDialog();
+        }
 
-        ////    base.Cleanup();
-        ////}
+        /// <summary>
+        /// 弹出 sqlite语句生成窗体
+        /// </summary>
+        private void ShowFormSqlite()
+        {
+            var d = new View.FormSqliteView();
+            d.ShowDialog();
+        }
+
     }
 }

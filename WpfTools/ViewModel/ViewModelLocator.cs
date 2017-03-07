@@ -39,6 +39,8 @@ namespace WpfTools.ViewModel
             }
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<FormExchangeStringPositionViewModel>();
+            SimpleIoc.Default.Register<FormSqliteViewModel>();
         }
 
         /// <summary>
@@ -52,6 +54,22 @@ namespace WpfTools.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
+            }
+        }
+
+        public FormExchangeStringPositionViewModel FormExchangeStringPosition
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<FormExchangeStringPositionViewModel>();
+            }
+        }
+
+        public FormSqliteViewModel FormSqlite
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<FormSqliteViewModel>();
             }
         }
 
